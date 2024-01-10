@@ -6,7 +6,7 @@ export function App(){
   return (
     <div>
       <Menu />
-      <h4>ReactJS+Vite : </h4>
+      <h4>ReactJS+Vite+Redux : </h4>
       <Outlet />
     </div>
   )
