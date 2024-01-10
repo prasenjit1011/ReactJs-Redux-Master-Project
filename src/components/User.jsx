@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { redirect } from "react-router-dom";
+import { redirect, generatePath, useNavigate, useParams } from "react-router-dom";
 
 export function User(){
     /** Fetch store data */
@@ -26,23 +26,25 @@ export function AddUser(){
     /** Update store data */
     const dispatch      = useDispatch();
     const createAction  = (type,action) => ({type, action});
-
+    
     const userName      = useRef();
+    const navigate      = useNavigate();
+    //const params      = useParams();
+
     const ADDNEWUSER    = (data) => {
         return createAction('ADDUSER', data);
     }
 
     const addNewCustomer = () => {
         let customerName = userName.current.value;
+        userName.current.value = '';
         dispatch(ADDNEWUSER(customerName));
-        console.log('redirect '+parseInt(1000*Math.random()));
-        //return redirect("/");
-        //setRerender(!rerender);
+        navigate(generatePath('/user'), { replace: true });
     }
 
     return (
         <div>
-            <b>Add User : </b>
+            <b>Add User Redirect: </b>
             <input ref={userName} placeholder='User' />
             <button type='button' onClick={()=>{addNewCustomer()}} className='btn btn-primary btn-sm'>Save</button>
         </div>

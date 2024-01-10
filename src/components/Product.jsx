@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { redirect } from "react-router-dom";
+import { redirect, generatePath, useNavigate, useParams } from "react-router-dom";
 
 export function Product(){
     /** Fetch store data */
@@ -26,14 +26,17 @@ export function AddProduct(){
     const createAction  = (type,action) => ({type, action});
 
     const prodName      = useRef();
+    const navigate      = useNavigate();
+    //const params      = useParams();
+
     const ADDNEWPROD    = (data) => {
         return createAction('ADDPROD', data);
     }
     const addNewProduct = () => {
         let productName = prodName.current.value;
         dispatch(ADDNEWPROD(productName));
-        redirect('/');
-        //setRerender(!rerender);
+
+        navigate(generatePath('/'), { replace: true });
     }
 
     return (
