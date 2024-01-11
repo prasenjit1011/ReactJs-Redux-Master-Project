@@ -11,6 +11,7 @@ import { Product } from './components/Product.jsx';
 import { User } from './components/User.jsx';
 import { AddProduct } from './components/Product.jsx';
 import { AddUser } from './components/User.jsx';
+import { Employee } from './components/Employee.jsx';
 
 
 const router = createBrowserRouter([{
@@ -19,6 +20,7 @@ const router = createBrowserRouter([{
   children:[
     { path:'/', element:<Product /> },
     { path:'/user', element:<User /> },
+    { path:'/employee', element:<Employee /> },
     { path:'/add/product', element:<AddProduct /> },
     { path:'/add/user', element:<AddUser /> },
   ]

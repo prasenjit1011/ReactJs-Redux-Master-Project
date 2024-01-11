@@ -4,9 +4,12 @@
 
 npm create vite@latest projectName <br />
 npm run dev <br />
-
 npm i react-router-dom react-redux redux <br />
 
+Redux <br />
+Router <br />
+Fetch API data <br />
+Pass Data child to parent <br />
 
 
 
