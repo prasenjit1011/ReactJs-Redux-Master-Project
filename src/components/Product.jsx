@@ -23,7 +23,7 @@ export function Product(){
 export function AddProduct(){
     /** Update store data */
     const dispatch      = useDispatch();
-    const createAction  = (type,action) => ({type, action});
+    const createAction  = (type, payload) => ({type, payload});
 
     const prodName      = useRef();
     const navigate      = useNavigate();

@@ -5,7 +5,7 @@ const PRODUCT   = {data:["P", "Q", "R"]};
 
 const userReducer = (state = USER, action) => {
     const type      = action.type;
-    const payload   = action.action;
+    const payload   = action.payload;
 
     if(type == 'ADDUSER'){
         let user = state.data;
@@ -19,7 +19,7 @@ const userReducer = (state = USER, action) => {
 
 const productReducer = (state = PRODUCT, action) => {
     const type      = action.type;
-    const payload   = action.action;
+    const payload   = action.payload;
 
     if(type == 'ADDPROD'){
         let prod = state.data;
