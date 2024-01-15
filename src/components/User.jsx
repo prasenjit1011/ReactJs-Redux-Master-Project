@@ -25,7 +25,7 @@ export function AddUser(){
 
     /** Update store data */
     const dispatch      = useDispatch();
-    const createAction  = (type,action) => ({type, action});
+    const createAction  = (type, payload) => ({type, payload});
 
     const userName      = useRef();
     const navigate      = useNavigate();
