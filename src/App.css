@@ -40,3 +40,38 @@
 .read-the-docs {
   color: #888;
 }
+
+
+.box{
+  width: 250px;
+  border: 1px solid #61dafbaa;
+  padding: 10px;
+  margin: 5px;
+  float: left;
+  background-color: aqua;
+  height:  270px;
+}
+
+.box-inner{
+  /*width: 90%;*/
+  margin: auto;
+  padding: 10px;;
+  background-color: blueviolet;
+  height: 92%;
+}
+
+.box-inner img{
+  width: 90%;
+}
+
+.box-inner a{
+  color: #000;
+
+}
+
+.box-inner a:hover{
+  color: #000;
+  
+}
+
+
