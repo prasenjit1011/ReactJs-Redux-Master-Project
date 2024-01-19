@@ -1,8 +1,9 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
   text-align: center;
+  background-color:"#00bcd4"
 }
 
 .logo {
@@ -43,12 +44,12 @@
 
 
 .box{
-  width: 250px;
-  border: 1px solid #61dafbaa;
+  width: 275px;
+  border: 1px solid #00bcd4;
   padding: 10px;
-  margin: 5px;
+  margin: 5px 1px;
   float: left;
-  background-color: aqua;
+  background-color: #00bcd4;
   height:  270px;
 }
 
@@ -74,4 +75,25 @@
   
 }
 
+.btn{
+  padding: 3px;
+  margin: 5px;;
+}
 
+.inputField{
+  font-size: larger;
+}
+
+.adminPageTtitle{
+  float: left;
+}
+
+.logout{
+  float: right;
+}
+
+.bookingTable{
+  width: 100%;
+  border: 1px solid #000;
+  border-collapse: collapse;
+}

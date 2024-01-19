@@ -15,7 +15,7 @@ export default function Listing(){
     },[]);
 
     return (
-        <div style={{width:"88%", margin:"auto"}}>
+        <div style={{ backgroundColor:"#00bcd4", width:"1200px", padding:"25px", marginTop:"10px", height:"128vh", border:"1px solid #000"}}>
             {
                 hotelList.map((value, index)=>{
                     return (
@@ -23,7 +23,10 @@ export default function Listing(){
                             <div className="box-inner">
                                 <img src={value.url} />
                                 <hr />
-                                <Link to={'/details'}>
+                                <Link to={'/admin'}>
+                                    Admin
+                                </Link>
+                                <Link to={'/details/'+value.id}>
                                     {value.title}
                                 </Link>
                             </div>

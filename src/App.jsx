@@ -9,7 +9,8 @@ function App() {
 
   return (
     <>
-      <div style={{margin:"auto"}}>
+      <div style={{margin:"auto", border:"1px solid #000"}}>
+        
         <Outlet />
       </div>
     </>
