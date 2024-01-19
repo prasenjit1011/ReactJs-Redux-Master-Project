@@ -84,6 +84,12 @@
   font-size: larger;
 }
 
+.headerSection{
+  height: 20px;
+  padding: 20px;
+  margin: 5px;;
+}
+
 .adminPageTtitle{
   float: left;
 }
@@ -96,4 +102,10 @@
   width: 100%;
   border: 1px solid #000;
   border-collapse: collapse;
+}
+
+.hotellogo{
+  width: 150px;
+  /*margin: 5px;
+  padding: 5px;*/
 }

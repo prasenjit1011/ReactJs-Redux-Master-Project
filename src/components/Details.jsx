@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import Menu from "./Menu";
 
 export default function Details(){
     const APIURL        = 'https://api.slingacademy.com/v1/sample-data/photos/';
@@ -41,18 +42,20 @@ export default function Details(){
 
 
     return (
-        <div style={{ backgroundColor:"#00bcd4", width:"1200px", padding:"25px", height:"100vh", border:"1px solid #000"}}>
+        <>
+            <Menu />
+            <div style={{ backgroundColor:"#00bcd4", width:"1200px", padding:"25px", height:"100vh", border:"0px solid #000"}}>
+                <img src={hotelDetails.url} style={{width:"400px", border:"1px solid #000", margin:"10px", padding:"15px", float:"left"}} />
+                <div className="details-content">
+                    <h5>{id} :: {hotelDetails.title}</h5>
+                    <p>{hotelDetails.description}</p>
+                    <p>{msg} &nbsp;</p>
+                    <input type="date" ref={dtd} className="inputField" />
+                    <button onClick={()=>{bookNow()}} className="btn">Book Now</button>
+                    <Link to={'/'}><button className="btn">Back</button></Link>
 
-            <img src={hotelDetails.url} style={{width:"400px", border:"1px solid #000", margin:"10px", padding:"15px", float:"left"}} />
-            <div className="details-content">
-                <h5>{id} :: {hotelDetails.title}</h5>
-                <p>{hotelDetails.description}</p>
-                <p>{msg} &nbsp;</p>
-                <input type="date" ref={dtd} className="inputField" />
-                <button onClick={()=>{bookNow()}} className="btn">Book Now</button>
-                <Link to={'/'}><button className="btn">Back</button></Link>
-
+                </div>
             </div>
-        </div>
+        </>
     )
 }

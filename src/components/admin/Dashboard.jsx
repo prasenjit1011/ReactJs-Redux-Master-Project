@@ -1,20 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Menu from "../Menu";
 
 export default function Dashboard(){
-
+    const navigate  = useNavigate();
+    const APIURL = 'http://localhost:3000/api/';
     const [bookingList, setBookingList] = useState([]);
-    
+    useEffect(()=>{
+        fetch(APIURL+'hotels/booking/list')
+            .then(response=>response.json())
+            .then(data=>{
+                console.log(data);
+                setBookingList(data)
+            })
+            .catch(err=>{
+                console.log(err);
+            });
+    },[]);
 
 
     return (
-        <div style={{height: "100vh", width: "1000px", margin:" 10px", border:"1px solid #000"}}>
-            <div>
-                <div className="adminPageTtitle">Dashboard</div>
-                <button className="logout btn">Logout</button>
-            </div>
+        <>
+        <Menu />
+        <div style={{ backgroundColor:"#00bcd4", width:"1200px", padding:"25px", marginTop:"10px", height:"128vh", border:"0px solid #000"}}>
+            
             <div>
                 <h3>Booking List</h3>
-                <table className="bookingTable">
+                <table border="1" className="bookingTable">
                     <thead>
                         <tr>
                             <th>SL</th>
@@ -24,10 +36,22 @@ export default function Dashboard(){
                         </tr>
                     </thead>
                     <tbody>
-
+                        {
+                            bookingList.map((value, key)=>{
+                                return (
+                                    <tr key={value._id}>
+                                        <td>{key+1}</td>
+                                        <td>{value.dtd}</td>
+                                        <td>{value.dtd}</td>
+                                        <td>{value.dtd}</td>
+                                    </tr>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
             </div>
         </div>
+        </>
     );
 }
