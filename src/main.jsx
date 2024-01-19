@@ -9,10 +9,12 @@ import Listing from './components/Listing'
 import Details from './components/Details'
 import { Login } from './components/admin/Login.jsx'
 import Dashboard from './components/admin/Dashboard.jsx'
+import { Errorpage } from './components/Errorpage.jsx'
 
 const router = createBrowserRouter([{
   path:'/',
   element:<App />,
+  errorElement:<Errorpage />,
   children:[
     { path:'/', element:<Listing />},
     { path:'/details/:id', element:<Details />},

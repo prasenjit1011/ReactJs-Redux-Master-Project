@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Form,  useNavigate } from "react-router-dom";
+import Menu from "../Menu";
 
 export function Login(){
     const username  = useRef();
@@ -11,12 +12,15 @@ export function Login(){
     }
 
     return (
-        <div>
-            <Form>
-                <input ref={username} className="inputField" placeholder="User Name" />
-                <input ref={pwd} className="inputField" placeholder="Password" />
-                <button className="btn" onClick={()=>{adminLogin()}}>Login</button>
-            </Form>
-        </div>
+        <>
+            <Menu pageType={"Home"} />
+            <div className="container">
+                <Form className="loginFrm">
+                    <input ref={username} className="inputField frmInput" placeholder="User Name" /><br />
+                    <input ref={pwd} className="inputField frmInput" placeholder="Password" /><br />
+                    <button className="frmBtn btn" onClick={()=>{adminLogin()}}>Login</button>
+                </Form>
+            </div>
+        </>
     )
 }

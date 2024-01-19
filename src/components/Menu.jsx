@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-export default function Menu(){
+export default function Menu({pageType}){
     const navigate  = useNavigate();
 
     return (
@@ -9,7 +9,10 @@ export default function Menu(){
             <div className="adminPageTtitle">
                 <img src={'/hotel.png'} className="hotellogo" onClick={()=>{navigate('/')}} style={{cursor:"pointer"}} />
             </div>
-            <button className="logout btn" onClick={()=>{navigate('/admin/dashboard')}}>Admin</button>
+
+            
+            <button className="logout btn" onClick={()=>{navigate('/admin')}}>{pageType?? ''}</button>
+
         </div>
     );
 }

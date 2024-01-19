@@ -3,31 +3,32 @@ import { Link } from "react-router-dom";
 import Menu from "./Menu";
 
 export default function Listing(){
-    const APIURL    = 'https://api.slingacademy.com/v1/sample-data/photos';
+    const APIURL    = 'http://localhost:3000/';
     const [hotelList, setHotelList] = useState([]);
 
     useEffect(()=>{
-        fetch(APIURL)
+        fetch(APIURL+'api/hotels/list/')
             .then(response=>response.json())
             .then(result=>{
-                setHotelList(result['photos']);
+
+                setHotelList(result);
             })
             .catch(err=>console.log(err));
     },[]);
 
     return (
         <>
-            <Menu />
-            <div style={{ backgroundColor:"#00bcd4", width:"1200px", padding:"25px", marginTop:"10px", height:"128vh", border:"0px solid #000"}}>
+            <Menu pageType={"Admin"} />
+            <div className="container">
                 {
                     hotelList.map((value, index)=>{
                         return (
                             <div className="box" key={index}>
                                 <div className="box-inner">
-                                    <img src={value.url} />
+                                    <img src={APIURL+value.imageUrl} />
                                     <hr />
-                                    <Link to={'/details/'+value.id}>
-                                        {value.title}
+                                    <Link to={'/details/'+value._id}>
+                                        {value.name}
                                     </Link>
                                 </div>
                             </div>
