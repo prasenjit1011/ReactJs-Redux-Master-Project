@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Menu from "./Menu";
 
 export default function Listing(){
-    const APIURL    = 'http://localhost:3000/';
+    const APIURL    = 'https://gh4csx-3000.csb.app/';
     const [hotelList, setHotelList] = useState([]);
 
     useEffect(()=>{

@@ -4,10 +4,10 @@ import Menu from "../Menu";
 
 export default function Dashboard(){
     const navigate  = useNavigate();
-    const APIURL = 'http://localhost:3000/api/';
+    const APIURL = 'https://gh4csx-3000.csb.app/';
     const [bookingList, setBookingList] = useState([]);
     useEffect(()=>{
-        fetch(APIURL+'hotels/booking/list')
+        fetch(APIURL+'api/hotels/booking/list')
             .then(response=>response.json())
             .then(data=>{
                 console.log(data);
