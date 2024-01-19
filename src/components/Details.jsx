@@ -4,23 +4,18 @@ import { Link } from "react-router-dom";
 import Menu from "./Menu";
 
 export default function Details(){
-    //const APIURL            = 'https://api.slingacademy.com/v1/sample-data/photos/';
-    const APIBOOKING        = 'http://localhost:3000/';
+    const APIURL        = 'http://localhost:3000/';
 
-    const [msg, setMsg]     = useState([]);
-
-    const [price, setPrice]       = useState(0);
+    const [msg, setMsg]         = useState([]);
+    const [price, setPrice]     = useState(0);
     const [guestNumber, setGuestNumber] = useState(1);
     const [hotelDetails, setHotelDetails] = useState([]);
-
 
     const {id}  = useParams();
     const dtd   = useRef();
 
-
-
     useEffect(()=>{
-        fetch(APIBOOKING+'api/hotels/details/'+id).then(response=>response.json()).then(data=>{
+        fetch(APIURL+'api/hotels/details/'+id).then(response=>response.json()).then(data=>{
             console.log(data);
             setPrice(data.price);
             setHotelDetails(data);
@@ -32,7 +27,7 @@ export default function Details(){
         let dtdVal      = dtd.current.value;
         let frmData     = JSON.stringify({userId:1, hotelId:id, dtd:dtdVal, guestNumber:guestNumber, price: price, hotelName:hotelDetails.name});
 
-        fetch(APIBOOKING+'api/hotels/book',{
+        fetch(APIURL+'api/hotels/book',{
             method:'post',
             mode:'cors',
             body:frmData,
@@ -58,7 +53,7 @@ export default function Details(){
         <>
             <Menu pageType={"Admin"} />
             <div className="container">
-                <img src={APIBOOKING + hotelDetails.imageUrl} style={{width:"400px", border:"1px solid #000", margin:"10px", padding:"15px", float:"left"}} />
+                <img src={APIURL + hotelDetails.imageUrl} style={{width:"400px", border:"1px solid #000", margin:"10px", padding:"15px", float:"left"}} />
                 <div className="details-content">
                     <h5>{hotelDetails.name}</h5>
                     <p>{hotelDetails.description}</p>
