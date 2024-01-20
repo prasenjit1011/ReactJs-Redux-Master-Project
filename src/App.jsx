@@ -12,7 +12,7 @@ export function App(){
   }
 
   return (
-    <div>
+    <div className="container">
       <Menu getMsg={getMsg} />
       <h4>ReactJS+Vite+Redux : {msg}</h4>
       <Outlet />

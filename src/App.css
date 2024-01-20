@@ -1,8 +1,27 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
   /*text-align: center;*/
+}
+
+
+.headerMenu p, a{
+  color: #000;
+}
+
+a:hover{
+  color: #F00;
+}
+
+.container{
+  background-color: #00bcd4;
+  width: 1200px;
+  padding: 25px;
+  margin-top: 10px;
+  height: 85vh; 
+  border: 1px solid #000
+
 }
 
 .logo {

@@ -1,7 +1,14 @@
+import { UploadButton } from "@bytescale/upload-widget-react";
 import { useEffect, useState } from "react";
 
 export function Employee(){
-    const [employee, setEmployee] = useState([]);
+    const [employee, setEmployee]   = useState([]);
+    const [imgUrl, setImgUrl]       = useState();
+    
+    const options = {
+        apiKey: "public_kW15bsXD4S6TkSsELHYsfYnfRe1h", // This is your API key.
+        maxFileCount: 1
+    };
 
     useEffect(()=>{
         let URL = 'https://dummy.restapiexample.com/api/v1/employees';
@@ -21,7 +28,7 @@ export function Employee(){
     return (
         <div>
             <b>Employee List : </b>Fetch API<br />
-            <div>
+            <div style={{height:"200px"}}>
             {
                 employee.map((val, key)=>(
                     <div key={key} style={{float:'left', margin:'15px'}}>
@@ -30,6 +37,24 @@ export function Employee(){
                     </div>
                 ))
             }
+            </div>
+
+            <div>
+                <div style={{height:"50px"}}>
+                    <UploadButton options={options}
+                        onComplete={files => {setImgUrl(files.map(x => x.fileUrl).join("\n"))}}>
+                        {({onClick}) =>
+                        <button onClick={onClick}>
+                            Upload a file...
+                        </button>
+                        }
+                    </UploadButton>
+                </div>
+                <div>
+                    {
+                        imgUrl ? <img src={imgUrl} style={{width:"100px"}} />:''
+                    }
+                </div>
             </div>
         </div>
     );

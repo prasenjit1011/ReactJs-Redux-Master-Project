@@ -10,7 +10,7 @@ export function User(){
 
     return (
         <div>
-            <b>Customer List : </b>
+            <b>Customer list using redux : </b>
             {
                 userList.map((val,key)=>(
                     <span key={key}>{val}, </span>)

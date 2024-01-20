@@ -10,7 +10,7 @@ export function Product(){
     
     return (
         <div>
-            <b>Product List : </b>
+            <b>Product list using redux: </b>
             {
                 prodList.map((val,key)=>(
                     <span key={key}>{val}, </span>)
