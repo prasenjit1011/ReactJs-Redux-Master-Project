@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import Menu from "./Menu";
 
 export default function Details(){
-    const APIURL        = 'https://gh4csx-3000.csb.app/';
+    const server    = false;
+    const apiHost   = server ? 'http://localhost:3000/' : 'https://gh4csx-3000.csb.app/';
 
     const [msg, setMsg]         = useState([]);
     const [price, setPrice]     = useState(0);
@@ -15,11 +16,14 @@ export default function Details(){
     const dtd   = useRef();
 
     useEffect(()=>{
-        fetch(APIURL+'api/hotels/details/'+id).then(response=>response.json()).then(data=>{
+        fetch(apiHost+'api/hotels/details/'+id).then(response=>response.json()).then(data=>{
             console.log(data);
             setPrice(data.price);
             setHotelDetails(data);
-        }).catch(err=>console.log(err));
+        }).catch((err)=>{
+            console.log(err)
+            alert('Something bad happened; Please check your API or Restart sandbox, https://codesandbox.io/p/github/prasenjit1011/bookingSystem/booking-master');
+        });
 
     }, []);
 
@@ -27,7 +31,7 @@ export default function Details(){
         let dtdVal      = dtd.current.value;
         let frmData     = JSON.stringify({userId:1, hotelId:id, dtd:dtdVal, guestNumber:guestNumber, price: price, hotelName:hotelDetails.name});
 
-        fetch(APIURL+'api/hotels/book',{
+        fetch(apiHost+'api/hotels/book',{
             method:'post',
             mode:'cors',
             body:frmData,
@@ -53,7 +57,7 @@ export default function Details(){
         <>
             <Menu pageType={"Admin"} />
             <div className="container">
-                <img src={APIURL + hotelDetails.imageUrl} style={{width:"400px", border:"1px solid #000", margin:"10px", padding:"15px", float:"left"}} />
+                <img src={apiHost + hotelDetails.imageUrl} style={{width:"400px", border:"1px solid #000", margin:"10px", padding:"15px", float:"left"}} />
                 <div className="details-content">
                     <h5>{hotelDetails.name}</h5>
                     <p>{hotelDetails.description}</p>

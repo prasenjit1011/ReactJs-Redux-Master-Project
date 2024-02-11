@@ -4,17 +4,20 @@ import Menu from "../Menu";
 
 export default function Dashboard(){
     const navigate  = useNavigate();
-    const APIURL = 'https://gh4csx-3000.csb.app/';
+    const server    = false;
+    const apiHost   = server ? 'http://localhost:3000/' : 'https://gh4csx-3000.csb.app/';
+
     const [bookingList, setBookingList] = useState([]);
     useEffect(()=>{
-        fetch(APIURL+'api/hotels/booking/list')
+        fetch(apiHost+'api/hotels/booking/list')
             .then(response=>response.json())
             .then(data=>{
                 console.log(data);
                 setBookingList(data)
             })
-            .catch(err=>{
-                console.log(err);
+            .catch((err)=>{
+                console.log(err)
+                alert('Something bad happened; Please check your API or Restart sandbox, https://codesandbox.io/p/github/prasenjit1011/bookingSystem/booking-master');
             });
     },[]);
 
