@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 
 const timenow   = new Date().getTime();
-const apiHost   = 'http://localhost:3000/';
+const apiHost   = false ? 'http://localhost:3000/':'https://457qfd-3000.csb.app/';
 
 let randNum = parseInt(100*Math.random());
 
