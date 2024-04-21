@@ -130,10 +130,10 @@ export function Fullcalendar() {
                 completeEvent={completeEvent}
             />
 
-            <div style={{width:954, height:600, backgroundColor:'#45c572'}}>
+            <div style={{width:1258, height:600, backgroundColor:'#45c572'}}>
                 <h3>Hello Mike,</h3>
 
-                <div style={{width:950, height:400, margin:2, backgroundColor:'#FFF'}}>
+                <div style={{width:1250, height:400, margin:4, backgroundColor:'#FFF'}}>
                     <FullCalendar
                         plugins={[timeGridPlugin]}
                         initialView='timeGridWeek'
