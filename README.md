@@ -12,7 +12,29 @@ Fetch API data <br />
 Pass Data child to parent <br />
 
 
+### Fetch GraphQL API data in ReactJS
+```bash
 
+fetch("http://localhost:3000/graphql", {
+    mode:'cors',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',  // Optional, depending on your GraphQL server
+    },
+    body: JSON.stringify({
+        query: '{mobiles{id,title,price}}',
+    }),
+})
+.then(res=>res.json())
+.then(res=>{
+    console.log(res.data);
+    setMobileData(res.data.mobiles)
+})
+.catch();
+
+
+```
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

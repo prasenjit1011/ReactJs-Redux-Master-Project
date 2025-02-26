@@ -2,13 +2,22 @@ import { UploadButton } from "@bytescale/upload-widget-react";
 import { useEffect, useState } from "react";
 
 export function Employee(){
+
+
+
+    
     const [employee, setEmployee]   = useState([]);
     const [imgUrl, setImgUrl]       = useState();
+    const [mobiles, setMobileData] = useState([]);
     
     const options = {
         apiKey: "public_kW15bsXD4S6TkSsELHYsfYnfRe1h", // This is your API key.
         maxFileCount: 1
     };
+
+
+
+
 
     useEffect(()=>{
         let URL = 'https://dummy.restapiexample.com/api/v1/employees';
@@ -23,6 +32,26 @@ export function Employee(){
             setEmployee(res.data)
         })
         .catch();
+
+
+        fetch("http://localhost:3000/graphql", {
+                mode:'cors',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',  // Optional, depending on your GraphQL server
+                },
+                body: JSON.stringify({
+                    query: '{mobiles{id,title,price}}',
+                }),
+            })
+            .then(res=>res.json())
+            .then(res=>{
+                console.log(res.data);
+                setMobileData(res.data.mobiles)
+            })
+            .catch();
+
     },[]);
 
     return (
@@ -38,7 +67,6 @@ export function Employee(){
                 ))
             }
             </div>
-
             <div>
                 <div style={{height:"50px"}}>
                     <UploadButton options={options}
@@ -55,6 +83,17 @@ export function Employee(){
                         imgUrl ? <img src={imgUrl} style={{width:"100px"}} />:''
                     }
                 </div>
+                <div style={{clear:"both"}}>
+                    <hr />
+                    <b>API Data using GraphQL :</b><br />
+                    {
+                        mobiles.map((val, key)=>(
+                            <div key={key} style={{float:'left', margin:'15px'}}>
+                                <div style={{color:"black"}}>{val['id']}) {val['title']} : {val['price']}</div>
+                            </div>
+                        ))
+                    }
+                </div>           
             </div>
         </div>
     );
